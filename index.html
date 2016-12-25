@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta lang="en-us">
+		<link rel="stylesheet" href="styles/default.css">
+	</head>
+
+	<body>
+		<!--<object type="image/svg+xml" data="image.svg">
+	  Your browser does not support SVG.
+		</object> -->
+
+		<div>
+			<h1>Wikipedia Viewer</h1>
+			<div class>
+			<!--<form id="search" method="get" action="/w/index.php">-->
+				<!--<form onSubmit="return getResults()"> This takes the enter but just reloads the page-->
+					<label>To search, type here:</label><br>
+					<input id="searchField" type="text" placeholder="FreeCodeCamp" ><!-- type="search" tabindex="0" aria-disabled="false" value="frogs" autocomplete="off"-->
+			<!--	<span>Icon for search?</span>
+				<span>Close icon that clears text</span> Looks like it just clears the value and only appears when there is text-->
+					<input id="searchBtn" type="submit" value='Search' onClick="scrubbedSearchTerm()"><!--  change back to input since ive no backend? -->
+				<!-- </form> -->
+			</div>
+			<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+			<input id="randBtn" type="button" value="Surprise me!" title="Click for a random article"> <!-- This works fine-->
+			</a>
+		</div>
+
+		<div id="preResults">&nbsp;<!-- Wikipedia test --></div>
+		<div id="results"></div>
+
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
+	</body>
+
+</html>

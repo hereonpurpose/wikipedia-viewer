@@ -4,32 +4,46 @@
 		<meta charset="utf-8">
 		<meta lang="en-us">
 		<link rel="stylesheet" href="styles/default.css">
+		<script src="https://use.fontawesome.com/92af9f8fee.js"></script>
+
+		<title>Wikipedia Viewer</title>
 	</head>
 
 	<body>
-		<!--<object type="image/svg+xml" data="image.svg">
-	  Your browser does not support SVG.
-		</object> -->
 
 		<div>
 			<h1>Wikipedia Viewer</h1>
-			<div class>
-			<!--<form id="search" method="get" action="/w/index.php">-->
-				<!--<form onSubmit="return getResults()"> This takes the enter but just reloads the page-->
-					<label>To search, type here:</label><br>
-					<input id="searchField" type="text" placeholder="FreeCodeCamp" ><!-- type="search" tabindex="0" aria-disabled="false" value="frogs" autocomplete="off"-->
-			<!--	<span>Icon for search?</span>
+			<div class="centered">
+				<label>What do you want to learn about?</label><br>
+				<input id="searchField" type="text" placeholder="FreeCodeCamp" size= 20px spellcheck="true"><!-- 
+What does 'inputmode = 'verbatim' ' do?
+
+				<span>Icon for search?</span>
 				<span>Close icon that clears text</span> Looks like it just clears the value and only appears when there is text-->
-					<input id="searchBtn" type="submit" value='Search' onClick="scrubbedSearchTerm()"><!--  change back to input since ive no backend? -->
-				<!-- </form> -->
 			</div>
-			<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
-			<input id="randBtn" type="button" value="Surprise me!" title="Click for a random article"> <!-- This works fine-->
-			</a>
+			<div class="centered">
+				<button id="searchBtn" type="button">Search
+					<i class="fa fa-search" aria-hidden="true"></i>
+				</button>
+				<button id="randBtn" type="button" title="Click for a random article"><!-- This works fine-->
+					<a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">Random
+						<i class="fa fa-random" aria-hidden="true"></i> 
+					</a>
+				</button>
+			</div>
+
+		<div class="centered">
+			<div id="preResults">&nbsp;<!-- Wikipedia test --></div>
+			<div id="results"></div>
+			<div id="fullContent"></div>
 		</div>
 
-		<div id="preResults">&nbsp;<!-- Wikipedia test --></div>
-		<div id="results"></div>
+		<footer>
+			<details>
+				<summary>Acknowledgement</summary>
+				<p>API - <a href="https://www.mediawiki.org/wiki/API:Main_page" target="_blank">MediaWiki </a><br> Icons - <a href="www.fontawesome.io/icons" target="_blank">FontAwesome</a></p>
+			</details>
+		</footer>
 
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script type="text/javascript" src="scripts/main.js"></script>

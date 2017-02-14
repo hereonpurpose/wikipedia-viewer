@@ -1,20 +1,86 @@
+
 /*
+Should I try to include some content?
+Number of results?
 
-https://www.mediawiki.org/wiki/API:Main_page
+https://www.behance.net/gallery/38835365/Bold-Leads-Landing-Pages
+  i like the drop shadow on the box
+  maybe have 'credits' in footer - 
+  stick image in bottom - background color same as top color?
+  mag. glass in right corner
+  each result in its' own bubble?
+  animation for results - unroll from top?
+  color scheme - split top/search and results with 2 different colors?
+  center all objects
+  search & random buttons side by side under text input?
 
-Sandbox:
-https://en.wikipedia.org/wiki/Special:ApiSandbox#action=query&titles=Main%20Page&prop=revisions&rvprop=content&format=jsonfm
+12/8 Brainstormed ideas, picked out background image, tried to manip it (meh), moved buttons around, centered stuff too
+
+
 */
-
-#preResults {
-	background-color: pink;
+body {
+  background-color: #3F51B5;
 }
 
-#searchField {
-	opacity: 0.5;
+h1 {
+	text-align: center;
+  padding-top: 20%;
+  color: white;
+  font-family: sans-serif;
+  font-weight: 400;
+} 
+
+label {
+  font-style: italic;
+  color: #C5CAE9;
 }
 
-body  {
-	background-color: orange;
-/*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
-*/}
+input {
+  background-color: white;
+  border: 1px solid #757575;
+  border-radius: 10px;
+  margin: 15px 0;
+  height: 20px; /* would like to keep this relative to font size */
+  width: 210px; /* would like to keep this relative to label length */
+  padding-left: 5px;
+}
+
+a {
+  color: #C5CAE9; /* ditto */
+  text-decoration: none;
+}
+
+button {
+  background-color: #00BCD4;
+  color: white;
+  font-size: medium;
+  margin: 0 3px;
+  border: 2px solid #00BCD4;
+  border-radius: 10px; /* prefix -webkit- and -moz- when decided*/
+}
+
+summary ::-webkit-details-marker {
+  display: none;
+  /* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details */
+}
+
+footer {
+  position: fixed;
+  bottom: 0px;
+}
+
+.centered {
+	text-align: center;
+}
+
+.article { /* the link color here */
+  border-left: #BDBDBD 7px groove;
+  background-color: white;
+  border-left: 2px solid #C5CAE9;
+}
+
+/*#searchField {
+	margin-bottom: 15px;
+  height: 25px;
+}*/
+

@@ -9,7 +9,7 @@ document.querySelector('#searchField').addEventListener('keypress', function(e){
 	if (key === 13) {
 		scrubbedSearchTerm();
 	}
-});// look up keypress
+});
 
 /* This should help format the search term so that unexpected characters and spaces don't break my API call*/
 var searchStr = '';
@@ -21,7 +21,6 @@ function scrubbedSearchTerm(){
 	//Now the string is used to call the API or let the user know that nothing was entered
 	if (scrubbedStr.length > 0) {
 		getResults(scrubbedStr);
-		//return searchStr;
 	} else {
 		alert("Sorry. I couldn't run the search with that input. Try using alphanumeric characters like (anything from A-z and 0-9).");
 	}
@@ -32,15 +31,9 @@ function getResults(str){
 	results.innerHTML = '';
 
 	var apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageterms&generator=prefixsearch&redirects=1&wbptterms=description&gpssearch=" + str + "&gpslimit=10";
-	/*Previous request URL:*/
-/*var apiUrl =
-"https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=revisions&rvprop=content&continue=&generator=allpages&gapprefix=" + str;
-*/
-
-
 
 	$.getJSON(apiUrl, function(json){
-		try {
+		//try { -- Need to figure this out again. Sometimes says 'no results when there are results'
 
 		//This strips away everything I don't need so I can focus on the pages that result from the search
 			var pagesOnlyJson = json.query.pages;
@@ -48,17 +41,19 @@ function getResults(str){
 			for (var key in pagesOnlyJson) {
 				var titles = pagesOnlyJson[key].title;
 				var link = "https://en.wikipedia.org/wiki/" + titles; //JSON.stringify( )
-				var introText = pagesOnlyJson[key].terms.description;
+				// I don't know if 'description' is what I want really
+				var introText = pagesOnlyJson[key].terms.description[0];
 				console.log(introText);
-				results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a> </div> <hr>";
-				fullContent.innerHTML = JSON.stringify(pagesOnlyJson); //start display \n and end display at \n. [[Article titles]]
+				// results seems really long
+				results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a>" + "<p> - " + introText + "</p>" + "</div> <hr>";
+				//fullContent.innerHTML = JSON.stringify(pagesOnlyJson); //start display \n and end display at \n. [[Article titles]]
 			}
 			//results.innerHTML = '<p>' + JSON.stringify(pagesOnlyJson[key].title) + '</p>';
 
-		} catch (e) {
+		/*} catch (e) {
 			preResults.innerHTML = "Nope";
 			results.innerHTML = "<p>No articles found starting with: " + document.getElementById("searchField").value + "</p>";
-		}
+		}*/
 	})
 }
 

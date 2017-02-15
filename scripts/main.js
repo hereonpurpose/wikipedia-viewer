@@ -4,10 +4,12 @@ const searchButton = document.getElementById('searchBtn');
 searchButton.addEventListener('click',scrubbedSearchTerm);
 
 /* Event listener for 'enter/return' (no form being submitted) to take search input forward */
-/*if (key === 13) {
-	scrubbedSearchTerm();
-}*/
-//})// look up keypress
+document.querySelector('#searchField').addEventListener('keypress', function(e){
+	var key = e.which || e.keyCode;
+	if (key === 13) {
+		scrubbedSearchTerm();
+	}
+});// look up keypress
 
 /* This should help format the search term so that unexpected characters and spaces don't break my API call*/
 var searchStr = '';

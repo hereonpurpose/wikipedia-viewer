@@ -1,10 +1,7 @@
-const goRandom = document.getElementById("randBtn"); 
-const searchButton = document.getElementById('searchBtn');
+document.getElementById('searchBtn').addEventListener('click',scrubbedSearchTerm);
 
-searchButton.addEventListener('click',scrubbedSearchTerm);
-
-/* Event listener for 'enter/return' (no form being submitted) to take search input forward */
-document.querySelector('#searchField').addEventListener('keypress', function(e){
+const searchField = document.querySelector('#searchField');
+searchField.addEventListener('keypress', function(e){
 	var key = e.which || e.keyCode;
 	if (key === 13) {
 		scrubbedSearchTerm();
@@ -15,14 +12,14 @@ document.querySelector('#searchField').addEventListener('keypress', function(e){
 var searchStr = '';
 
 function scrubbedSearchTerm(){
-	searchStr = document.querySelector('#searchField').value; 
+	searchStr = searchField.value; 
 	var scrubbedStr = searchStr.replace(/\s+/g, '+').replace(/[^A-Za-z0-9+]/g, "");
 
 	//Now the string is used to call the API or let the user know that nothing was entered
 	if (scrubbedStr.length > 0) {
 		getResults(scrubbedStr);
 	} else {
-		alert("Sorry. I couldn't run the search with that input. Try using alphanumeric characters like (anything from A-z and 0-9).");
+		alert("Sorry. I couldn't run the search with that input. Try using alphanumeric characters (anything from A-z and 0-9).");
 	}
 }
 
@@ -40,12 +37,10 @@ function getResults(str){
 
 			for (var key in pagesOnlyJson) {
 				var titles = pagesOnlyJson[key].title;
-				var link = "https://en.wikipedia.org/wiki/" + titles; //JSON.stringify( )
-				// I don't know if 'description' is what I want really
+				var link = "https://en.wikipedia.org/wiki/" + titles;
 				var introText = pagesOnlyJson[key].terms.description[0];
-				console.log(introText);
 				// results seems really long
-				results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a>" + "<p> - " + introText + "</p>" + "</div> <hr>";
+				results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a>" + "<br><p>" + introText + "</p>" + "</div> <hr>";
 				//fullContent.innerHTML = JSON.stringify(pagesOnlyJson); //start display \n and end display at \n. [[Article titles]]
 			}
 			//results.innerHTML = '<p>' + JSON.stringify(pagesOnlyJson[key].title) + '</p>';

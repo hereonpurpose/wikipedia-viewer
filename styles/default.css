@@ -1,22 +1,10 @@
 
 /*
-Should I try to include some content?
-Number of results?
-
 https://www.behance.net/gallery/38835365/Bold-Leads-Landing-Pages
   i like the drop shadow on the box
-  maybe have 'credits' in footer - 
-  stick image in bottom - background color same as top color?
-  mag. glass in right corner
   each result in its' own bubble?
   animation for results - unroll from top?
   color scheme - split top/search and results with 2 different colors?
-  center all objects
-  search & random buttons side by side under text input?
-
-12/8 Brainstormed ideas, picked out background image, tried to manip it (meh), moved buttons around, centered stuff too
-
-
 */
 body {
   background-color: #3F51B5;
@@ -74,13 +62,6 @@ footer {
 }
 
 .article { /* the link color here */
-  border-left: #BDBDBD 7px groove;
   background-color: white;
-  border-left: 2px solid #C5CAE9;
 }
-
-/*#searchField {
-	margin-bottom: 15px;
-  height: 25px;
-}*/
 

@@ -38,9 +38,9 @@ function getResults(str){
 			for (var key in pagesOnlyJson) {
 				var titles = pagesOnlyJson[key].title;
 				var link = "https://en.wikipedia.org/wiki/" + titles;
-				var introText = pagesOnlyJson[key].terms.description[0];
+				var introText = pagesOnlyJson[key].terms.description[0];//can't read this for undefined
 				// results seems really long
-				results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a>" + "<br><p>" + introText + "</p>" + "</div> <hr>";
+				results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a>" + "<br><p>" + introText + "</p>" + "</div>";
 				//fullContent.innerHTML = JSON.stringify(pagesOnlyJson); //start display \n and end display at \n. [[Article titles]]
 			}
 			//results.innerHTML = '<p>' + JSON.stringify(pagesOnlyJson[key].title) + '</p>';

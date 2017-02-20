@@ -30,25 +30,26 @@ function getResults(str){
 	var apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageterms&generator=prefixsearch&redirects=1&wbptterms=description&gpssearch=" + str + "&gpslimit=10";
 
 	$.getJSON(apiUrl, function(json){
-		//try { -- Need to figure this out again. Sometimes says 'no results when there are results'
 
-		//This strips away everything I don't need so I can focus on the pages that result from the search
-			var pagesOnlyJson = json.query.pages;
+		//This strips away everything I don't need so I can focus on the pages that result from the search			
+		var pagesOnlyJson = json.query.pages;
 
+		if (!json.hasOwnProperty('continue')){ // and therefore has no 'pages' to return
+			preResults.innerHTML = "<p>No articles found starting with: " + searchStr + "</p>";
+		} else {
 			for (var key in pagesOnlyJson) {
 				var titles = pagesOnlyJson[key].title;
 				var link = "https://en.wikipedia.org/wiki/" + titles;
-				var introText = pagesOnlyJson[key].terms.description[0];//can't read this for undefined
-				// results seems really long
-				results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a>" + "<br><p>" + introText + "</p>" + "</div>";
-				//fullContent.innerHTML = JSON.stringify(pagesOnlyJson); //start display \n and end display at \n. [[Article titles]]
+				
+				// Writes results with link and, if available, a description
+				if (!json.query.pages[key].hasOwnProperty('terms')){
+					results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a></div><br>";
+				} else {
+					var introText = pagesOnlyJson[key].terms.description[0];
+					results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a><br><p>" + introText + "</p></div>";
+				}
 			}
-			//results.innerHTML = '<p>' + JSON.stringify(pagesOnlyJson[key].title) + '</p>';
-
-		/*} catch (e) {
-			preResults.innerHTML = "Nope";
-			results.innerHTML = "<p>No articles found starting with: " + document.getElementById("searchField").value + "</p>";
-		}*/
+		}
 	})
 }
 

@@ -27,7 +27,7 @@ function getResults(str){
 	preResults.innerHTML = "<p>Article titles that start with: " + searchStr + "</p>";
 	results.innerHTML = '';
 
-	var apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageterms&generator=prefixsearch&redirects=1&wbptterms=description&gpssearch=" + str + "&gpslimit=10";
+	var apiUrl = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageterms&list=&generator=search&redirects=1&wbptterms=description&gsrsearch=" + str + "&gpslimit=10";
 
 	$.getJSON(apiUrl, function(json){
 
@@ -43,17 +43,14 @@ function getResults(str){
 				
 				// Writes results with link and, if available, a description
 				if (!json.query.pages[key].hasOwnProperty('terms')){
-					results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a></div><br>";
+					results.innerHTML += "<a href='" + link + "'" + "target='_blank'><div class='article'>" + titles + "</div></a>";
+
 				} else {
 					var introText = pagesOnlyJson[key].terms.description[0];
-					results.innerHTML += "<div class='article'> <a href='" + link + "'" + "target='_blank'>" + titles + "</a><br><p>" + introText + "</p></div>";
+					results.innerHTML += "<a href='" + link + "'" + "target='_blank'><div class='article'>" + titles + "<p>" + introText + "</p></div></a>";
+
 				}
 			}
 		}
 	})
 }
-
-
-var results = document.getElementById("results");
-
-

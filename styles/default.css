@@ -1,26 +1,29 @@
-
-/*
-https://www.behance.net/gallery/38835365/Bold-Leads-Landing-Pages
-  i like the drop shadow on the box
-  each result in its' own bubble?
-  animation for results - unroll from top?
-  color scheme - split top/search and results with 2 different colors?
-*/
 body {
   background-color: #3F51B5;
+  color: white;
+  font-size: 16px;
 }
 
 h1 {
-	text-align: center;
+  text-align: center;
   padding-top: 20%;
   color: white;
   font-family: sans-serif;
   font-weight: 400;
+  font-size: 220%;
 } 
+
+p {
+  /*font-size: 120%;*/
+  line-height: 1.2;
+  font-weight: normal;
+}
 
 label {
   font-style: italic;
   color: #C5CAE9;
+  text-align: center;
+  font-size: 110%;
 }
 
 input {
@@ -28,14 +31,21 @@ input {
   border: 1px solid #757575;
   border-radius: 10px;
   margin: 15px 0;
-  height: 20px; /* would like to keep this relative to font size */
-  width: 210px; /* would like to keep this relative to label length */
+  height: 1.4em;
+  width: 210px;
   padding-left: 5px;
+  font-size: 16px;
 }
 
 a {
-  color: #C5CAE9; /* ditto */
+  color: #3F51B5;
+  font-weight: bold;
+  font-size: 110%;
   text-decoration: none;
+}
+
+.article:hover {
+  background-color: #00BCD4;
 }
 
 button {
@@ -44,12 +54,25 @@ button {
   font-size: medium;
   margin: 0 3px;
   border: 2px solid #00BCD4;
-  border-radius: 10px; /* prefix -webkit- and -moz- when decided*/
+  border-radius: 10px;
+}
+
+button > a {
+  color: white;
+  font-weight: normal;
+  font-size: medium;
+}
+
+details {
+  background-color: #C5CAE9;
+  color: #16384A;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
 summary ::-webkit-details-marker {
   display: none;
-  /* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details */
+  padding: 0 0 3px 0;
 }
 
 footer {
@@ -57,11 +80,19 @@ footer {
   bottom: 0px;
 }
 
-.centered {
-	text-align: center;
+div {
+  text-align: center;
 }
 
-.article { /* the link color here */
+div#results {
+  margin-bottom: 35px;
+}
+
+.article {
   background-color: white;
+  color: #16384A;
+  text-align: center;
+  margin: 10px 15%;
+  padding: 10px 20px;
+  border-radius: 6px;
 }
-

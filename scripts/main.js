@@ -43,11 +43,11 @@ function getResults(str){
 				
 				// Writes results with link and, if available, a description
 				if (!json.query.pages[key].hasOwnProperty('terms')){
-					results.innerHTML += "<a href='" + link + "'" + "target='_blank'><div class='article'>" + titles + "</div></a>";
+					results.innerHTML += "<div class='article'><a href='" + link + "'" + "target='_blank'><div>" + titles + "</div></a></div>";
 
 				} else {
 					var introText = pagesOnlyJson[key].terms.description[0];
-					results.innerHTML += "<a href='" + link + "'" + "target='_blank'><div class='article'>" + titles + "<p>" + introText + "</p></div></a>";
+					results.innerHTML += "<div class='article'><a href='" + link + "'" + "target='_blank'><div>" + titles + "<p>" + introText + "</p></div></a></div>";
 
 				}
 			}

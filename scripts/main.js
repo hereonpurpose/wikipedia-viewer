@@ -1,7 +1,7 @@
 document.getElementById('searchBtn').addEventListener('click',scrubbedSearchTerm);
 
-const searchField = document.querySelector('#searchField');
-searchField.addEventListener('keypress', function(e){
+const mySearchField = document.querySelector('#searchField');
+mySearchField.addEventListener('keypress', function(e){
 	var key = e.which || e.keyCode;
 	if (key === 13) {
 		scrubbedSearchTerm();
